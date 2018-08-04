@@ -364,6 +364,210 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/git环境搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hfighter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="每日进步一点点~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/30/git环境搭建/" itemprop="url">
+                  Git环境搭建
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-30 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-30T00:00:00+08:00">2018-07-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-08-04 18:20:28" itemprop="dateModified" datetime="2018-08-04T18:20:28+08:00">2018-08-04</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <span class="post-meta-divider">|</span>
+          <span title="post.wordcount">
+          字数统计 320 字
+          </span>
+
+          <span class="post-meta-divider">|</span>
+          <span title="post.min2read">
+          阅读时长 1 分钟
+          </span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="1、安装homebrew-或者-直接下载安装cakebrew"><a href="#1、安装homebrew-或者-直接下载安装cakebrew" class="headerlink" title="1、安装homebrew 或者 直接下载安装cakebrew"></a>1、安装homebrew 或者 直接下载安装cakebrew</h4><ul>
+<li><p><a href="https://brew.sh/index_zh-cn.html" target="_blank" rel="noopener">安装homebrew</a></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://www.cakebrew.com/" target="_blank" rel="noopener">安装cakebrew</a></p>
+</li>
+</ul>
+<h4 id="2、git安装"><a href="#2、git安装" class="headerlink" title="2、git安装"></a>2、git安装</h4><blockquote>
+<p>brew install git</p>
+</blockquote>
+<h4 id="3、拉取代码前需要根据github或者gitlab账号生成ssh-key-然后将生成的-pub中的内容拷贝到github或者gitlib的ssh-key中"><a href="#3、拉取代码前需要根据github或者gitlab账号生成ssh-key-然后将生成的-pub中的内容拷贝到github或者gitlib的ssh-key中" class="headerlink" title="3、拉取代码前需要根据github或者gitlab账号生成ssh-key,然后将生成的.pub中的内容拷贝到github或者gitlib的ssh key中"></a>3、拉取代码前需要根据github或者gitlab账号生成ssh-key,然后将生成的.pub中的内容拷贝到github或者gitlib的ssh key中</h4><ul>
+<li><p>1、生成ssh-key</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C &quot;邮箱账号&quot;</span><br></pre></td></tr></table></figure>
+<p>  此步骤会生成公钥和私钥，将公钥(xxx.pub)中的内容拷贝到ssh key中</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/30/git环境搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+    <div>
+    
+    </div>
+
+      
+
+      
+      
+       <!-- <div class="post-eof"></div> -->
+       <div style="margin-bottom:50px;"> </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/11/XXNet访问Google/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -534,7 +738,8 @@
 
       
       
-        <div class="post-eof"></div>
+       <!-- <div class="post-eof"></div> -->
+       <div style="margin-bottom:50px;"> </div>
       
     </footer>
   </div>
@@ -592,7 +797,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -607,7 +812,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -626,7 +833,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -737,8 +946,6 @@
 
 
 
-  
-
 
 
 
@@ -764,11 +971,6 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1169,9 +1371,6 @@
   
 
 
-
-<script type="text/javascript"
-color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 
 </body>
 </html>

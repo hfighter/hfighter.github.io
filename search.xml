@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git环境搭建]]></title>
+    <url>%2F2018%2F07%2F30%2Fgit%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[1、安装homebrew 或者 直接下载安装cakebrew 安装homebrew 1/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 安装cakebrew 2、git安装 brew install git 3、拉取代码前需要根据github或者gitlab账号生成ssh-key,然后将生成的.pub中的内容拷贝到github或者gitlib的ssh key中 1、生成ssh-key 12cd ~/.sshssh-keygen -t rsa -C &quot;邮箱账号&quot; 此步骤会生成公钥和私钥，将公钥(xxx.pub)中的内容拷贝到ssh key中 2、将密钥加入ssh-agent缓存中参考 12cd ~/.sshssh-add -K xxx（私钥） 至此git环境已经配置完成，可以通过git clone来克隆代码 4、如果mac中同时存在github和gitlab的key需要作区分，新版的mac系统每次重启后都需要重新执行ssh-add比较麻烦， 解决方法如下： 1、cd ~/.ssh 2、touch config 3、配置文件 1234567891011121314151617# githubHost github.comHostName github.comUser youremail.com //github对应的emailIdentityFile ~/.ssh/id_rsa_github //github对应的私钥# coding.netHost git.coding.netHostName git.coding.netUser youremail.com //coding对应的emailIdentityFile ~/.ssh/blog //coding对应的私钥# gitlabHost gitlab.comHostNmae gitlab.comUser youremail.com //coding对应的emailIdentityFile ~/.ssh/id_rsa //coding对应的私钥 注意：Host和HostNmae必须一样]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[XX-Net 是在国内能够访问Google的一种方式]]></title>
     <url>%2F2017%2F07%2F11%2FXXNet%E8%AE%BF%E9%97%AEGoogle%2F</url>
     <content type="text"><![CDATA[一、XX-Net 是在国内能够访问Google的一种方式。二、配置XX-Net大致需要以下几个步骤 1、Google账号(Google邮箱账号)，此步骤比较简单，在此不做说明 2、下载XX-Net👉猛戳，然后安装，安装步骤👉猛戳 3、在Google上创建AppId，步骤👉猛戳 4、部署服务端，步骤👉猛戳 的下半文 5、其它参考👉猛戳 三、针对以上步骤做以下说明：1、建议先进行第2步，再进行第3步；由于创建AppId需要访问Google，先安装上XX-Net后，XX-Net自带公用账号，可以访问Google尽管速度慢点😊；2、对于创建AppId，由于访问比较慢可能费时一些；创建Id地址👉猛戳 ；设置AppID的App引擎👉猛戳选择刚创建的Id3、设置弱网应用许可👉猛戳4、设置应用专用密码👉猛戳5、部署服务端，Windows部署相对简单参考文档可以部署成功，Mac参考文档部署不成功，遇到问题可以参考👉猛戳 and👉猛戳；Mac下部署我使用的是命令部署的，具体命令如下: 四、共享电脑的vpn给手机共享电脑VPN给手机，具体步骤如下，参考👉猛戳： 1、将xx-net\code\default\gae_proxy\local\proxy.ini 内容复制\data\gae_proxy\config.ini中并修改config.ini中 12345678910[pac]enable = 1ip = 0.0.0.0port = 8086file = proxy.pac[listen]ip = 0.0.0.0port = 8087visible = 1debuginfo = 0 2、手机安装证书，将XX-Net中的CA.crt，发送到邮箱，然后在手机查看邮件安装 3、打开XX-Net系统配置 允许远程连接Web控制端，重启XX-Net 4、手机端设置代理，HTTP代理选择自动，URL填写：http://电脑ip:8086/proxy.pac]]></content>
