@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[iOS中copy和mutableCopy]]></title>
+    <url>%2F2018%2F08%2F23%2FiOS%E4%B8%ADcopy%E5%92%8CmutableCopy%2F</url>
+    <content type="text"><![CDATA[1、copy 和 mutableCopycopy和mutableCopy是iOS中对象拷贝的两种方式，区别如下： copy：浅拷贝，指针拷贝 mutableCopy： 深拷贝，内存拷贝 下面通过一个例子来理解他们的区别： 1234NSString *str = @&quot;hello&quot;;NSString *copyStr = [str copy];NSString *mcopyStr = [str mutableCopy];NSLog(@&quot;\nstr is %p\ncopyStr is %p\nmcopyStr is %p&quot;, str, copyStr, mcopyStr); 三个对象的地址如下： 123str is 0x106e0b198copyStr is 0x106e0b198mcopyStr is 0x600000456170 2、自定义对象实现copy和mutableCopy对于自定义对象如果直接调用copy和mutableCopy会出现崩溃。自定义类需实现NSCopying和NSMutableCopying协议重写copyWithZone 和 mutableCopyWithZone方法。 3、NSArray，调用copy和mutableCopyNSArray调用copy，只做了array的指针赋值过程；mutableCopy开辟了新的数组空间，那数组中的对象有没有深拷贝呢？ 123456789101112131415Person *person = [Person new];person.name = @&quot;hfighter&quot;;person.age = 20;NSArray *array = @[person];NSLog(@&quot;array is %p&quot;, array);NSLog(@&quot;array is %@&quot;, array);NSArray *copyArray = [array copy];NSLog(@&quot;copyarray is %p&quot;, copyArray);NSLog(@&quot;copyarray is %@&quot;, copyArray);NSMutableArray *mcopyArray = [array mutableCopy];NSLog(@&quot;mcopyarray is %p&quot;, newArray);NSLog(@&quot;mcopyarray is %@&quot;, newArray); 结果如下： 12345678910111213array is 0x608000011450array is ( &quot;&lt;Person: 0x608000235ac0&gt;&quot;)copyarray is 0x608000011450copyarray is ( &quot;&lt;Person: 0x608000235ac0&gt;&quot;)mcopyarray is 0x60800024e1c0mcopyarray is ( &quot;&lt;Person: 0x608000235ac0&gt;&quot;) 可以看出NSArray的mutableCopy时，array中的对象并没有进行深拷贝。]]></content>
+      <categories>
+        <category>对象拷贝</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>对象拷贝</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Xcode编译过程]]></title>
     <url>%2F2018%2F08%2F08%2FXcode%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[一般程序的编译过程分为以下几个步骤：1、预处理(预编译) 2、编译 3、链接 4、生成可执行文件 Xcode编译过程页类似，还有一些特有步骤，如下：1、预编译，主要是替换include和宏等 2、编译 3、链接，链接工程中依赖的framework和.a 4、拷贝资源(图片，字体，strings等)和编译xib，storyboard，assetxib编译生成nib文件；storyboard编译生成nib+plist文件；asset编译生成car文件 5、Process info.plist文件 6、Touch app文件 7、Process product packaging(Copy Swift standard libraries（可选）) 8、app sign(包签名) 9、validate app(连接真机编译) 如果工程依赖于其它target会优先编译依赖的target。这些过程可以在Xcode中查看：]]></content>
