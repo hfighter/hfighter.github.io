@@ -148,12 +148,12 @@
 <meta property="og:site_name" content="每日进步一点点~">
 <meta property="og:description" content="在说如何扩大相应区域之前先来了解一下，iOS中事件的传递和响应的过程。 1、iOS中事件的传递和响应在iOS App用用户操作UI，点击页面，事件的传递和响应过程大致如下：  传递过程   UIApplication -&amp;gt; keyWindow -&amp;gt; UIView和UIViewController —&amp;gt; 通过 hitTest 和 pointInside 方法来找到最佳响应触摸的vi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/08/23/iOS扩大控件的响应区域/images/eventpass.png">
-<meta property="og:updated_time" content="2018-08-23T13:56:45.213Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hfighter/hfighter.github.io/master/images/eventpass.png">
+<meta property="og:updated_time" content="2018-08-23T14:02:57.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS扩大控件的响应区域">
 <meta name="twitter:description" content="在说如何扩大相应区域之前先来了解一下，iOS中事件的传递和响应的过程。 1、iOS中事件的传递和响应在iOS App用用户操作UI，点击页面，事件的传递和响应过程大致如下：  传递过程   UIApplication -&amp;gt; keyWindow -&amp;gt; UIView和UIViewController —&amp;gt; 通过 hitTest 和 pointInside 方法来找到最佳响应触摸的vi">
-<meta name="twitter:image" content="http://yoursite.com/2018/08/23/iOS扩大控件的响应区域/images/eventpass.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hfighter/hfighter.github.io/master/images/eventpass.png">
 
 
 
@@ -412,7 +412,7 @@
                 
               
 
-              <time title="创建时间：2018-08-23 00:00:00 / 修改时间：21:56:45" itemprop="dateCreated datePublished" datetime="2018-08-23T00:00:00+08:00">2018-08-23</time>
+              <time title="创建时间：2018-08-23 00:00:00 / 修改时间：22:02:57" itemprop="dateCreated datePublished" datetime="2018-08-23T00:00:00+08:00">2018-08-23</time>
             
 
             
@@ -494,8 +494,9 @@
 <p>  从上一步找到的最佳view开始，反向寻找userInteractionEnabled = YES; 实现了手势 或者 touchBegin等方法的view。</p>
 </li>
 </ul>
+<a id="more"></a>
 <p>过程图如下：</p>
-<p><img src="images/eventpass.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/hfighter/hfighter.github.io/master/images/eventpass.png" alt=""></p>
 <h4 id="2、扩大控件的响应区域"><a href="#2、扩大控件的响应区域" class="headerlink" title="2、扩大控件的响应区域"></a>2、扩大控件的响应区域</h4><p>下面以button为例，说明如何扩大button的响应区域。</p>
 <p>新建button的子类，重写方法 pointInside如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@interface LargerResponseButton : UIButton</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) UIEdgeInsets addtionalInsets;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface LargerResponseButton ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) CGRect largerRect;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation LargerResponseButton</span><br><span class="line"></span><br><span class="line">- (void)layoutSubviews &#123;</span><br><span class="line">    [super layoutSubviews];</span><br><span class="line">    self.largerRect = CGRectMake(-self.addtionalInsets.left,</span><br><span class="line">                                 -self.addtionalInsets.top,</span><br><span class="line">                                 CGRectGetWidth(self.frame)+self.addtionalInsets.left+self.addtionalInsets.right,</span><br><span class="line">                                 CGRectGetHeight(self.frame)+self.addtionalInsets.top+self.addtionalInsets.bottom);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event &#123;</span><br><span class="line">    if (CGRectContainsPoint(self.largerRect, point)) &#123;</span><br><span class="line">        return YES;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return [super pointInside:point withEvent:event];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
@@ -544,8 +545,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/23/iOS中copy和mutableCopy/" rel="next" title="iOS中copy和mutableCopy">
-                <i class="fa fa-chevron-left"></i> iOS中copy和mutableCopy
+              <a href="/2018/08/08/Xcode编译过程/" rel="next" title="Xcode编译过程">
+                <i class="fa fa-chevron-left"></i> Xcode编译过程
               </a>
             
           </div>
@@ -553,6 +554,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/23/iOS中copy和mutableCopy/" rel="prev" title="iOS中copy和mutableCopy">
+                iOS中copy和mutableCopy <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>

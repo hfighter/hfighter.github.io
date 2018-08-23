@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[iOS扩大控件的响应区域]]></title>
-    <url>%2F2018%2F08%2F23%2FiOS%E6%89%A9%E5%A4%A7%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%93%8D%E5%BA%94%E5%8C%BA%E5%9F%9F%2F</url>
-    <content type="text"><![CDATA[在说如何扩大相应区域之前先来了解一下，iOS中事件的传递和响应的过程。 1、iOS中事件的传递和响应在iOS App用用户操作UI，点击页面，事件的传递和响应过程大致如下： 传递过程 UIApplication -&gt; keyWindow -&gt; UIView和UIViewController —&gt; 通过 hitTest 和 pointInside 方法来找到最佳响应触摸的view(该view可见)。 响应过程 从上一步找到的最佳view开始，反向寻找userInteractionEnabled = YES; 实现了手势 或者 touchBegin等方法的view。 过程图如下： 2、扩大控件的响应区域下面以button为例，说明如何扩大button的响应区域。 新建button的子类，重写方法 pointInside如下： 123456789101112131415161718192021222324252627282930313233@interface LargerResponseButton : UIButton@property (nonatomic, assign) UIEdgeInsets addtionalInsets;@end@interface LargerResponseButton ()@property (nonatomic, assign) CGRect largerRect;@end@implementation LargerResponseButton- (void)layoutSubviews &#123; [super layoutSubviews]; self.largerRect = CGRectMake(-self.addtionalInsets.left, -self.addtionalInsets.top, CGRectGetWidth(self.frame)+self.addtionalInsets.left+self.addtionalInsets.right, CGRectGetHeight(self.frame)+self.addtionalInsets.top+self.addtionalInsets.bottom);&#125;- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event &#123; if (CGRectContainsPoint(self.largerRect, point)) &#123; return YES; &#125; else &#123; return [super pointInside:point withEvent:event]; &#125;&#125;@end@end]]></content>
-      <categories>
-        <category>控件响应区</category>
-      </categories>
-      <tags>
-        <tag>iOS</tag>
-        <tag>控件响应区</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[iOS中copy和mutableCopy]]></title>
     <url>%2F2018%2F08%2F23%2FiOS%E4%B8%ADcopy%E5%92%8CmutableCopy%2F</url>
     <content type="text"><![CDATA[1、copy 和 mutableCopycopy和mutableCopy是iOS中对象拷贝的两种方式，区别如下： copy：浅拷贝，指针拷贝 mutableCopy： 深拷贝，内存拷贝 下面通过一个例子来理解他们的区别： 1234NSString *str = @&quot;hello&quot;;NSString *copyStr = [str copy];NSString *mcopyStr = [str mutableCopy];NSLog(@&quot;\nstr is %p\ncopyStr is %p\nmcopyStr is %p&quot;, str, copyStr, mcopyStr); 三个对象的地址如下： 123str is 0x106e0b198copyStr is 0x106e0b198mcopyStr is 0x600000456170 2、自定义对象实现copy和mutableCopy对于自定义对象如果直接调用copy和mutableCopy会出现崩溃。自定义类需实现NSCopying和NSMutableCopying协议重写copyWithZone 和 mutableCopyWithZone方法。 3、NSArray，调用copy和mutableCopyNSArray调用copy，只做了array的指针赋值过程；mutableCopy开辟了新的数组空间，那数组中的对象有没有深拷贝呢？ 123456789101112131415Person *person = [Person new];person.name = @&quot;hfighter&quot;;person.age = 20;NSArray *array = @[person];NSLog(@&quot;array is %p&quot;, array);NSLog(@&quot;array is %@&quot;, array);NSArray *copyArray = [array copy];NSLog(@&quot;copyarray is %p&quot;, copyArray);NSLog(@&quot;copyarray is %@&quot;, copyArray);NSMutableArray *mcopyArray = [array mutableCopy];NSLog(@&quot;mcopyarray is %p&quot;, newArray);NSLog(@&quot;mcopyarray is %@&quot;, newArray); 结果如下： 12345678910111213array is 0x608000011450array is ( &quot;&lt;Person: 0x608000235ac0&gt;&quot;)copyarray is 0x608000011450copyarray is ( &quot;&lt;Person: 0x608000235ac0&gt;&quot;)mcopyarray is 0x60800024e1c0mcopyarray is ( &quot;&lt;Person: 0x608000235ac0&gt;&quot;) 可以看出NSArray的mutableCopy时，array中的对象并没有进行深拷贝。同理，NSDictionary与NSArray类似。 对于，NSMutableString，NSMutableArray，NSMutableDicionary，copy和mutableCopy都是深拷贝，其中的对象并没有进行深拷贝。]]></content>
@@ -22,6 +10,18 @@
       <tags>
         <tag>iOS</tag>
         <tag>对象拷贝</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[iOS扩大控件的响应区域]]></title>
+    <url>%2F2018%2F08%2F23%2FiOS%E6%89%A9%E5%A4%A7%E6%8E%A7%E4%BB%B6%E7%9A%84%E5%93%8D%E5%BA%94%E5%8C%BA%E5%9F%9F%2F</url>
+    <content type="text"><![CDATA[在说如何扩大相应区域之前先来了解一下，iOS中事件的传递和响应的过程。 1、iOS中事件的传递和响应在iOS App用用户操作UI，点击页面，事件的传递和响应过程大致如下： 传递过程 UIApplication -&gt; keyWindow -&gt; UIView和UIViewController —&gt; 通过 hitTest 和 pointInside 方法来找到最佳响应触摸的view(该view可见)。 响应过程 从上一步找到的最佳view开始，反向寻找userInteractionEnabled = YES; 实现了手势 或者 touchBegin等方法的view。 过程图如下： 2、扩大控件的响应区域下面以button为例，说明如何扩大button的响应区域。 新建button的子类，重写方法 pointInside如下： 123456789101112131415161718192021222324252627282930313233@interface LargerResponseButton : UIButton@property (nonatomic, assign) UIEdgeInsets addtionalInsets;@end@interface LargerResponseButton ()@property (nonatomic, assign) CGRect largerRect;@end@implementation LargerResponseButton- (void)layoutSubviews &#123; [super layoutSubviews]; self.largerRect = CGRectMake(-self.addtionalInsets.left, -self.addtionalInsets.top, CGRectGetWidth(self.frame)+self.addtionalInsets.left+self.addtionalInsets.right, CGRectGetHeight(self.frame)+self.addtionalInsets.top+self.addtionalInsets.bottom);&#125;- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event &#123; if (CGRectContainsPoint(self.largerRect, point)) &#123; return YES; &#125; else &#123; return [super pointInside:point withEvent:event]; &#125;&#125;@end@end]]></content>
+      <categories>
+        <category>控件响应区</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>控件响应区</tag>
       </tags>
   </entry>
   <entry>
