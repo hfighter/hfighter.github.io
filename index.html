@@ -549,6 +549,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/23/iOS扩大控件的响应区域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hfighter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="每日进步一点点~">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/23/iOS扩大控件的响应区域/" itemprop="url">
+                  iOS扩大控件的响应区域
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-08-23 00:00:00 / 修改时间：21:48:42" itemprop="dateCreated datePublished" datetime="2018-08-23T00:00:00+08:00">2018-08-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/控件响应区/" itemprop="url" rel="index"><span itemprop="name">控件响应区</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <span class="post-meta-divider">|</span>
+          <span title="post.wordcount">
+          字数统计 284 字
+          </span>
+
+          <span class="post-meta-divider">|</span>
+          <span title="post.min2read">
+          阅读时长 1 分钟
+          </span>
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在说如何扩大相应区域之前先来了解一下，iOS中事件的传递和响应的过程。</p>
+<h4 id="1、iOS中事件的传递和响应"><a href="#1、iOS中事件的传递和响应" class="headerlink" title="1、iOS中事件的传递和响应"></a>1、iOS中事件的传递和响应</h4><p>在iOS App用用户操作UI，点击页面，事件的传递和响应过程大致如下：</p>
+<ul>
+<li><p>传递过程</p>
+<p>  UIApplication -&gt; keyWindow -&gt; UIView和UIViewController —&gt; 通过 hitTest 和 pointInside 方法来找到最佳响应触摸的view(该view可见)。</p>
+</li>
+<li><p>响应过程</p>
+<p>  从上一步找到的最佳view开始，反向寻找userInteractionEnabled = YES; 实现了手势 或者 touchBegin等方法的view。</p>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/23/iOS扩大控件的响应区域/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+    <div>
+    
+    </div>
+
+      
+
+      
+      
+       <!-- <div class="post-eof"></div> -->
+       <div style="margin-bottom:50px;"> </div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/Xcode编译过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1752,7 +1940,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1779,7 +1967,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1812,7 +2002,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
