@@ -148,7 +148,7 @@
 <meta property="og:site_name" content="每日进步一点点~">
 <meta property="og:description" content="1、copy 和 mutableCopycopy和mutableCopy是iOS中对象拷贝的两种方式，区别如下： copy：浅拷贝，指针拷贝 mutableCopy： 深拷贝，内存拷贝 下面通过一个例子来理解他们的区别： 1234NSString *str = @&amp;quot;hello&amp;quot;;NSString *copyStr = [str copy];NSString *mcopyStr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-23T07:30:36.525Z">
+<meta property="og:updated_time" content="2018-08-23T13:13:06.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中copy和mutableCopy">
 <meta name="twitter:description" content="1、copy 和 mutableCopycopy和mutableCopy是iOS中对象拷贝的两种方式，区别如下： copy：浅拷贝，指针拷贝 mutableCopy： 深拷贝，内存拷贝 下面通过一个例子来理解他们的区别： 1234NSString *str = @&amp;quot;hello&amp;quot;;NSString *copyStr = [str copy];NSString *mcopyStr">
@@ -410,7 +410,7 @@
                 
               
 
-              <time title="创建时间：2018-08-23 00:00:00 / 修改时间：15:30:36" itemprop="dateCreated datePublished" datetime="2018-08-23T00:00:00+08:00">2018-08-23</time>
+              <time title="创建时间：2018-08-23 00:00:00 / 修改时间：21:13:06" itemprop="dateCreated datePublished" datetime="2018-08-23T00:00:00+08:00">2018-08-23</time>
             
 
             
@@ -457,7 +457,7 @@
 
           <span class="post-meta-divider">|</span>
           <span title="post.wordcount">
-          字数统计 314 字
+          字数统计 345 字
           </span>
 
           <span class="post-meta-divider">|</span>
@@ -495,7 +495,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Person *person = [Person new];</span><br><span class="line">person.name = @&quot;hfighter&quot;;</span><br><span class="line">person.age = 20;</span><br><span class="line"></span><br><span class="line">NSArray *array = @[person];</span><br><span class="line">NSLog(@&quot;array is %p&quot;, array);</span><br><span class="line">NSLog(@&quot;array is %@&quot;, array);</span><br><span class="line"></span><br><span class="line">NSArray *copyArray = [array copy];</span><br><span class="line">NSLog(@&quot;copyarray is %p&quot;, copyArray);</span><br><span class="line">NSLog(@&quot;copyarray is %@&quot;, copyArray);</span><br><span class="line"></span><br><span class="line">NSMutableArray *mcopyArray = [array mutableCopy];</span><br><span class="line">NSLog(@&quot;mcopyarray is %p&quot;, newArray);</span><br><span class="line">NSLog(@&quot;mcopyarray is %@&quot;, newArray);</span><br></pre></td></tr></table></figure>
 <p>结果如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">array is 0x608000011450</span><br><span class="line">array is (</span><br><span class="line">    &quot;&lt;Person: 0x608000235ac0&gt;&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">copyarray is 0x608000011450</span><br><span class="line">copyarray is (</span><br><span class="line">    &quot;&lt;Person: 0x608000235ac0&gt;&quot;</span><br><span class="line">)</span><br><span class="line">mcopyarray is 0x60800024e1c0</span><br><span class="line">mcopyarray is (</span><br><span class="line">    &quot;&lt;Person: 0x608000235ac0&gt;&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>可以看出NSArray的mutableCopy时，array中的对象并没有进行深拷贝。</p>
+<p>可以看出NSArray的mutableCopy时，array中的对象并没有进行深拷贝。同理，NSDictionary与NSArray类似。</p>
+<p>对于，NSMutableString，NSMutableArray，NSMutableDicionary，copy和mutableCopy都是深拷贝，其中的对象并没有进行深拷贝。</p>
 
       
     </div>
