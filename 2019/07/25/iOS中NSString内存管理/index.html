@@ -154,7 +154,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/hfighter/Learning-iOS/master/iOS%E4%B8%ADNSString%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/str-03.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hfighter/Learning-iOS/master/iOS%E4%B8%ADNSString%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/str-04-01.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/hfighter/Learning-iOS/master/iOS%E4%B8%ADNSString%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/str-04-02.png">
-<meta property="og:updated_time" content="2019-07-25T07:39:34.628Z">
+<meta property="og:updated_time" content="2019-07-25T08:14:09.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中NSString内存管理">
 <meta name="twitter:description" content="引言：NSString作为iOS日常开发中常用的类型，我们有必要清楚它的内存表示以及内存管理。在一个方法中定义的NSString对象是何时释放的呢？自定义的对象呢？下面我将通过demo来回答这几个问题。 下面的demo将借助UIViewController的生命周期方法viewDidLoad, viewWillAppear, viewDidAppear 方法进行。我们知道weak修饰的对象不影响其">
@@ -417,7 +417,7 @@
                 
               
 
-              <time title="创建时间：2019-07-25 00:00:00 / 修改时间：15:39:34" itemprop="dateCreated datePublished" datetime="2019-07-25T00:00:00+08:00">2019-07-25</time>
+              <time title="创建时间：2019-07-25 00:00:00 / 修改时间：16:14:09" itemprop="dateCreated datePublished" datetime="2019-07-25T00:00:00+08:00">2019-07-25</time>
             
 
             
@@ -508,7 +508,7 @@
 <p>是不是所有的NSString都是存储为TaggedPointer？很显然不是的，当NSString标识大量字符串时，NSString便存储在堆上了。那么一般多少个字符系统会用NSTaggedPointerString表示呢？</p>
 <p><img src="https://raw.githubusercontent.com/hfighter/Learning-iOS/master/iOS%E4%B8%ADNSString%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/str-03.png" alt=""></p>
 <p>上图可以看到，<code>str3</code> 的 <code>isa</code> 是 <code>__NSCFString</code>。并且 gstr3 在 viewDidLoad 结束时并没有释放，在 viewWillAppear 时仍然有值，直到 viewDidAppear 时才释放。这是什么原因呢？此处我也没有更好的办法来直接验证，不过通过运行调试Runtime源码可以发现，在当前autoreleaspool释放时，isa 为 __NSCFString 释放了。</p>
-<p>经测试发现，一般NSString表示小于10个 ASSII字符时，系统会用NSTaggedPointerString表示字符串。</p>
+<p>经测试发现，一般NSString表示小于10个 ASCII字符时，系统会用NSTaggedPointerString表示字符串。</p>
 <ul>
 <li>NSString 不同初始化方法的差异</li>
 </ul>
